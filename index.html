@@ -1,92 +1,846 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Train 1</title>
+    <title>Portofolio | Desainer Modern</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* VARIABEL & RESET */
+        :root {
+            --primary: #2A5C82;
+            --secondary: #A61C1C;
+            --dark: #333333;
+            --light: #F5F5F5;
+            --white: #FFFFFF;
+            --gray: #777777;
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 4rem;
+            --border-radius: 4px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            background-color: var(--white);
+            color: var(--dark);
+            line-height: 1.6;
         }
-        .navbar {
-            overflow: hidden;
-            background-color: #19776d;
-            margin-bottom: 15px;
-            border-radius: 10px;
-            position: sticky;
-            top: 1px;
 
-
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
         }
-        .navbar a {
-            float: right;
-            display: block;
-            color: #ffffff;
+
+        section {
+            padding: var(--spacing-xl) 0;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: var(--spacing-md);
+        }
+
+        h1 {
+            font-size: 3rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
             text-align: center;
-            padding: 14px 16px;
+            margin-bottom: var(--spacing-xl);
+            position: relative;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+
+        p {
+            margin-bottom: var(--spacing-md);
+            color: var(--gray);
+        }
+
+        a {
             text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
         }
-        .navbar a:hover {
-            background-color: #4db0ae;
-            color: rgb(255, 255, 255);
+
+        ul {
+            list-style: none;
         }
-        .navbar .welcome {
-            float: left;
-            color: #ffffff;
-            padding: 14px 16px;
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
         }
-        .foto {
-            padding: 5px;
-            box-shadow: 5px 5px 10px;
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: var(--dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        /* HEADER & NAVIGASI */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .navbar {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: var(--spacing-lg);
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            padding-top: 120px;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            background-color: var(--light);
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: var(--spacing-md);
+        }
+
+        .hero-image {
+            text-align: center;
+        }
+
+        .hero-image img {
             border-radius: 10px;
-            height: 100vh;
-            width: 100%;
-            background-image: url('sample.jpg');
-            background-size: cover; /* Membuat gambar memenuhi layar */
-            background-position: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
-    
-        .menu {
-            height: 300px;
-            width: 100%;
-            background-color: rgb(111, 14, 30);
-            text-align: center;
-            margin-top: 15px;
+
+        /* ABOUT SECTION */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: var(--spacing-xl);
+            align-items: center;
         }
-        h3 {
+
+        .about-image img {
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+
+        .skill-tag {
+            background-color: var(--light);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+        }
+
+        /* PROJECTS SECTION */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .project-card {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-image {
+            height: 200px;
+            background-color: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+        }
+
+        .project-info {
+            padding: var(--spacing-md);
+        }
+
+        .project-info h3 {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: var(--spacing-sm);
+        }
+
+        .project-tag {
+            background-color: var(--light);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+
+        /* SERVICES SECTION */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .service-card {
             text-align: center;
-            color: #000000;
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-            margin-top: 30px;
-            margin-bottom: 25px;
-        }  
-        h5 {
+            padding: var(--spacing-lg);
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        /* CONTACT SECTION */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-weight: 500;
+        }
+
+        .form-control {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: var(--spacing-xl) 0 var(--spacing-md);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .footer-logo span {
+            color: var(--primary);
+        }
+
+        .footer-about p {
+            color: #ccc;
+        }
+
+        .footer-links h3, .footer-social h3 {
+            margin-bottom: var(--spacing-md);
+            font-size: 1.2rem;
+        }
+
+        .footer-links ul {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer-links a {
+            color: #ccc;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: var(--spacing-md);
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
             text-align: center;
-            color: #000000;
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-            margin-top: 30px;
-            margin-bottom: 15px;
-        } 
+            padding-top: var(--spacing-md);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .hero-content, .about-content, .contact-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                position: relative;
+            }
+            
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                flex-direction: column;
+                padding: var(--spacing-lg);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                transform: translateY(-10px);
+                opacity: 0;
+                visibility: hidden;
+                transition: var(--transition);
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            section {
+                padding: var(--spacing-lg) 0;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .projects-grid, .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
-    <h3>Small Steps Big Change</h3>
-    <div class="navbar">
-        <a href="https://cv-bice-six.vercel.app/">CV</a>
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <span class="welcome">Welcome</span>
-    </div>
-    <div class="foto">
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">Porto<span>folio</span></a>
+                <ul class="nav-links">
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="#about">Tentang</a></li>
+                    <li><a href="#projects">Proyek</a></li>
+                    <li><a href="#services">Layanan</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Desain Modern & Solusi Kreatif</h1>
+                    <p>Saya adalah seorang desainer dengan fokus pada desain yang bersih, fungsional, dan estetis. Saya membantu merek dan bisnis tumbuh melalui solusi desain yang efektif.</p>
+                    <div class="hero-btns">
+                        <a href="#projects" class="btn">Lihat Proyek</a>
+                        <a href="#contact" class="btn btn-outline">Hubungi Saya</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div style="width: 100%; height: 400px; background-color: #e0e0e0; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #777;">
+                        <i class="fas fa-image" style="font-size: 3rem;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>Tentang Saya</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <div style="width: 100%; height: 400px; background-color: #e0e0e0; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #777;">
+                        <i class="fas fa-user" style="font-size: 3rem;"></i>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <h3>Desainer dengan Pendekatan Modern</h3>
+                    <p>Dengan pengalaman lebih dari 5 tahun di industri desain, saya telah membantu berbagai klien dari startup hingga perusahaan besar dalam menciptakan identitas visual yang kuat dan efektif.</p>
+                    <p>Saya percaya bahwa desain yang baik adalah desain yang tidak hanya indah dipandang, tetapi juga berfungsi dengan baik dan mencapai tujuan bisnis.</p>
+                    <div class="skills">
+                        <span class="skill-tag">UI/UX Design</span>
+                        <span class="skill-tag">Branding</span>
+                        <span class="skill-tag">Web Design</span>
+                        <span class="skill-tag">Graphic Design</span>
+                        <span class="skill-tag">Illustration</span>
+                        <span class="skill-tag">Prototyping</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2>Proyek Terbaru</h2>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-mobile-alt" style="font-size: 3rem;"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3>Aplikasi Fintech Modern</h3>
+                        <p>Desain UI/UX untuk aplikasi mobile fintech dengan fokus pada pengalaman pengguna yang intuitif.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">UI Design</span>
+                            <span class="project-tag">UX Research</span>
+                            <span class="project-tag">Mobile App</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-shopping-bag" style="font-size: 3rem;"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3>E-commerce Brand Identity</h3>
+                        <p>Membuat identitas merek lengkap untuk platform e-commerce termasuk logo, warna, dan tipografi.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Branding</span>
+                            <span class="project-tag">Logo Design</span>
+                            <span class="project-tag">Visual Identity</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-laptop" style="font-size: 3rem;"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3>Website Perusahaan</h3>
+                        <p>Mendesain dan mengembangkan website responsif untuk perusahaan teknologi dengan fokus pada konversi.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Web Design</span>
+                            <span class="project-tag">Development</span>
+                            <span class="project-tag">Responsive</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2>Layanan</h2>
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-pencil-alt"></i>
+                    </div>
+                    <h3>UI/UX Design</h3>
+                    <p>Mendesain pengalaman pengguna yang intuitif dan antarmuka yang menarik untuk aplikasi dan website.</p>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Branding</h3>
+                    <p>Membuat identitas visual yang kuat dan konsisten untuk membangun pengenalan merek.</p>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Web Development</h3>
+                    <p>Mengembangkan website responsif dan modern dengan teknologi terkini.</p>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>App Design</h3>
+                    <p>Mendesain aplikasi mobile yang fungsional dan menarik untuk platform iOS dan Android.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Hubungi Saya</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Mari Berkolaborasi</h3>
+                    <p>Saya selalu terbuka untuk mendiskusikan proyek baru, ide kreatif, atau peluang untuk menjadi bagian dari visi Anda.</p>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>hello@example.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h4>Telepon</h4>
+                            <p>+62 812 3456 7890</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Lokasi</h4>
+                            <p>Jakarta, Indonesia</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Nama</label>
+                        <input type="text" id="name" class="form-control" placeholder="Nama lengkap Anda">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" class="form-control" placeholder="alamat@email.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subjek</label>
+                        <input type="text" id="subject" class="form-control" placeholder="Subjek pesan">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Pesan</label>
+                        <textarea id="message" class="form-control" placeholder="Tulis pesan Anda di sini..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn">Kirim Pesan</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">Porto<span>folio</span></div>
+                    <p>Desainer dengan pendekatan modern dan minimalis, berfokus pada menciptakan solusi desain yang efektif dan estetis.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Tautan Cepat</h3>
+                    <ul>
+                        <li><a href="#home">Beranda</a></li>
+                        <li><a href="#about">Tentang</a></li>
+                        <li><a href="#projects">Proyek</a></li>
+                        <li><a href="#services">Layanan</a></li>
+                        <li><a href="#contact">Kontak</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-social">
+                    <h3>Media Sosial</h3>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-dribbble"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-behance"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Portofolio. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
         
-    </div>
-    <div class="menu">
-        <h2>menu</h2>
-    </div>
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        // Form submission (prevent default for demo)
+        document.querySelector('.contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Terima kasih! Pesan Anda telah dikirim. (Ini hanya demo)');
+        });
+    </script>
 </body>
-<footer>
-    <h5>&copy;Muhammad Ajam Jamaludin</h5>
-</footer>
 </html>
